@@ -20,4 +20,22 @@ while True:
 max_score=50
 players_score=[0 for _ in range(players)]
 
-print(players_score)
+while max(players_score) < max_score:
+    for player_idx in range(players):
+        print("\n player number",player_idx + 1, "turn has just started!")
+        current_score=0
+        should_roll = input("would you like to roll (y)?")
+        if should_roll.lower() != "y":
+            break
+        value = roll()
+        if value == 1:
+            print("you rolled 1! Turn done!")
+            current_score = 0  
+            break
+        else:
+            current_score=value
+            print("you rolled a:",value)
+ 
+        print("your score is:",current_score)
+    players_score[player_idx] += current_score
+    print("your total score is:",players_score[player_idx])
